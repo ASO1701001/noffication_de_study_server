@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="a2f9d2de-d340-4548-a5cd-d8535e931bd9" name="sv" url="http://eve.main.jp">
+        <fileTransfer host="ftp.eve.main.jp" port="21" rootFolder="/noffication-de-study">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" passiveMode="true" shareSSLContext="true" />
+          </advancedOptions>
+          <option name="port" value="21" />
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>
