@@ -1,5 +1,9 @@
 <?php
 class RequestManager {
+    /** DB更新取得
+     * @param $last_update_date
+     * @return null
+     */
     public static function dbUpdate($last_update_date) {
         require_once 'DatabaseManager.php';
         $db = new DatabaseManager();
@@ -48,6 +52,10 @@ class RequestManager {
         return $data;
     }
 
+    /** ユーザー登録
+     * @param $token
+     * @return string
+     */
     public static function addUser($token) {
         require_once 'DatabaseManager.php';
         $db = new DatabaseManager();
@@ -66,5 +74,35 @@ class RequestManager {
         $db->insert($sql, $array);
 
         return $user_id;
+    }
+
+    /** 統計情報取得
+     * @return array
+     */
+    public static function getStatisticsInfo() {
+        require_once 'DatabaseManager.php';
+        $db = new DatabaseManager();
+        $sql = "SELECT * FROM answers_rate_db";
+        $data = $db->fetchAll($sql, array());
+        return $data;
+    }
+
+    /** 解答履歴登録
+     * @param $user_id
+     * @param $question_id
+     * @param $answer_choice
+     * @param $answer_time
+     * @return string
+     */
+    public static function addAnswer($user_id, $question_id, $answer_choice, $answer_time) {
+        require_once 'DatabaseManager.php';
+        $db = new DatabaseManager();
+        $sql = "INSERT INTO all_user_answers(user_id, question_id, answer_choice, answer_time) VALUES (:user_id, :question_id, :answer_choice, :answer_time)";
+        $array = array('user_id' => $user_id, 'question_id' => $question_id, 'answer_choice' => $answer_choice, 'answer_time' => $answer_time);
+        $id = $db->insert($sql, $array);
+        if (!$id) {
+            return false;
+        }
+        return $id;
     }
 }
