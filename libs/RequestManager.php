@@ -19,6 +19,13 @@ class RequestManager {
         $array = array();
         $data['answer_db'] = $db->fetchAll($sql, $array);
 
+        // exams_db
+        /*
+        $sql = "SELECT * FROM exams_db";
+        $array = array();
+        $data['exams_db'] = $db->fetchAll($sql, $array);
+        */
+
         // exams_numbers_db
         $sql = "SELECT * FROM exams_numbers_db";
         $array = array();
@@ -48,6 +55,11 @@ class RequestManager {
         $sql = "SELECT * FROM questions_genres_db";
         $array = array();
         $data['questions_genres_db'] = $db->fetchAll($sql, $array);
+
+        // correct_answer_db
+        $sql = "SELECT * FROM correct_answer_db";
+        $array = array();
+        $data['correct_answer_db'] = $db->fetchAll($sql, $array);
 
         return $data;
     }
